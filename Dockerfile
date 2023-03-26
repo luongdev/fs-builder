@@ -20,6 +20,11 @@ RUN cd /usr/src \
 RUN cd /usr/src && git clone https://github.com/freeswitch/spandsp.git spandsp \
   && cd spandsp && sh autogen.sh && ./configure && make && make install && ldconfig
 
+RUN cd /usr/src && git clone https://github.com/grpc/grpc.git \
+  && cd grpc && git checkout c66d2cc && git submodule update --init --recursive \
+  && mkdir -p cmake/build && cd cmake/build && cmake -DBUILD_SHARED_LIBS=ON \
+    -DgRPC_SSL_PROVIDER=package -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo ../..
+
 RUN cd /usr/src && wget http://files.freeswitch.org/freeswitch-releases/freeswitch-1.10.8.-release.zip \
   && unzip freeswitch-1.10.8.-release.zip && mv freeswitch-1.10.8.-release freeswitch
 
