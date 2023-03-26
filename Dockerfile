@@ -20,6 +20,9 @@ RUN cd /usr/src \
 RUN cd /usr/src && git clone https://github.com/freeswitch/spandsp.git spandsp \
   && cd spandsp && sh autogen.sh && ./configure && make && make install && ldconfig
 
+RUN /bin/sh -c cd /usr/src && git clone https://github.com/warmcat/libwebsockets.git websockets && cd websockets \
+  && mkdir -p build && cd build && cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo && make && make install
+
 RUN cd /usr/src && git clone https://github.com/grpc/grpc.git \
   && cd grpc && git checkout c66d2cc && git submodule update --init --recursive \
   && mkdir -p cmake/build && cd cmake/build && cmake -DBUILD_SHARED_LIBS=ON \
@@ -63,7 +66,8 @@ RUN cd /usr/src/freeswitch && make && make install && make sounds-install moh-in
 RUN mkdir -p /usr/share/freeswitch/sounds/music/default \
   && mv /usr/share/freeswitch/sounds/music/*000 /usr/share/freeswitch/sounds/music/default
 
-RUN apt autoclean && rm -rf /usr/src/libks && rm -rf /usr/src/sofia-sip && rm -rf /usr/src/spandsp
+RUN apt autoclean && rm -rf /usr/src/libks && rm -rf /usr/src/sofia-sip \
+  && rm -rf /usr/src/spandsp && rm -rf /usr/src/websockets && rm -rf /usr/src/grpc
 
 VOLUME ["/etc/freeswitch", "/var/lib/freeswitch", "/usr/share/freeswitch", "/opt/freeswitch"]
 
