@@ -1,0 +1,55 @@
+187c187,188
+< 			char *file = input_code, *fdup = NULL;
+---
+> 			// char *file = input_code, *fdup = NULL;
+> 			char *file = input_code, *fdup = NULL, *priv_dup = NULL;
+189c190,193
+< 			if (!switch_is_file_path(file)) {
+---
+> 			priv_dup = switch_mprintf("%s/%s/%s", SWITCH_GLOBAL_dirs.private_dir, "scripts", file);
+> 			if (switch_file_exists(priv_dup, NULL) == SWITCH_STATUS_SUCCESS) {
+> 				file = priv_dup;
+> 			} else if (!switch_is_file_path(file)) {
+317a322,330
+> 		path_stream.write_function(&path_stream, "%s", "/usr/local/share/lua/?.lua");
+> 		
+> 		char *event_lua_file = switch_mprintf("%s/scripts/app.lua", SWITCH_GLOBAL_dirs.private_dir);
+> 		if (switch_file_exists(event_lua_file, NULL) == SWITCH_STATUS_SUCCESS) {
+> 			switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_INFO, "lua: find xml-hander-script in private dir\n");
+> 			char *hander_file = switch_mprintf("%s handlers", event_lua_file);
+> 			globals.xml_handler = switch_core_strdup(globals.pool, hander_file);
+> 		}
+> 
+323a337
+> 				switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_DEBUG, "binding '%s' to '%s'\n", globals.xml_handler, val);
+409a424,453
+> 		switch_memory_pool_t *temp_pool = NULL;
+> 		if (switch_core_new_memory_pool(&temp_pool) == SWITCH_STATUS_SUCCESS) {
+> 			switch_status_t status;
+> 			switch_dir_t *dir = NULL;
+> 
+> 			char *startup_dir = switch_mprintf("%s/scripts/app/startup", SWITCH_GLOBAL_dirs.private_dir);
+> 			if ((status = switch_dir_open(&dir, startup_dir, temp_pool)) == SWITCH_STATUS_SUCCESS) {
+> 				const char *fname;
+> 				const char *fname_ext;
+> 				char buffer[256];
+> 				const char *ext = ".lua";
+> 
+> 				while((fname = switch_dir_next_file(dir, buffer, sizeof(buffer)))) {
+> 					if ((fname_ext = strrchr(fname, '.'))) {
+> 						if (!strcmp(fname_ext, ext)) {
+> 							char *startup_lua = switch_mprintf("%s/%s", startup_dir, fname);
+> 							if (switch_file_exists(startup_lua, NULL) == SWITCH_STATUS_SUCCESS) {
+> 									switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_INFO, "startup lua will be start\n");
+> 									lua_thread(startup_lua);
+> 									switch_yield(10000);
+> 							}
+> 						}
+> 					}
+> 				}
+> 
+> 				switch_dir_close(dir);
+> 				switch_core_destroy_memory_pool(&temp_pool);
+> 			}
+> 		}
+> 

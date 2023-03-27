@@ -1,0 +1,52 @@
+3c3
+< #applications/mod_avmd
+---
+> applications/mod_avmd
+6c6
+< #applications/mod_callcenter
+---
+> applications/mod_callcenter
+11c11
+< #applications/mod_curl
+---
+> applications/mod_curl
+15c15
+< #applications/mod_distributor
+---
+> applications/mod_distributor
+20c20
+< #applications/mod_esl
+---
+> applications/mod_esl
+22c22
+< applications/mod_fifo
+---
+> #applications/mod_fifo
+26c26
+< #applications/mod_hiredis
+---
+> applications/mod_hiredis
+42,43c42,43
+< applications/mod_signalwire
+< applications/mod_sms
+---
+> #applications/mod_signalwire
+> #applications/mod_sms
+58a59
+> applications/mod_audio_fork
+84c85
+< dialplans/mod_dialplan_asterisk
+---
+> #dialplans/mod_dialplan_asterisk
+110c111
+< #event_handlers/mod_json_cdr
+---
+> event_handlers/mod_json_cdr
+124c125
+< #formats/mod_shout
+---
+> formats/mod_shout
+164c165
+< xml_int/mod_xml_cdr
+---
+> #xml_int/mod_xml_cdr
