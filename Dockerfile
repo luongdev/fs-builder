@@ -38,15 +38,17 @@ COPY ./src/libs/fs_cli.c /usr/src/freeswitch/libs/esl/fs_cli.c
 RUN fs_mod_file='/usr/src/freeswitch/modules.conf' && fs_configure_file='/usr/src/freeswitch/configure.ac' &&\
   sed -i $fs_mod_file -e s:'#applications/mod_avmd:applications/mod_avmd:' && \
   sed -i $fs_mod_file -e s:'#applications/mod_callcenter:applications/mod_callcenter:' && \
-  sed -i $fs_mod_file -e s:'#applications/mod_cidlookup:applications/mod_cidlookup:' && \
-  sed -i $fs_mod_file -e s:'#applications/mod_memcache:applications/mod_memcache:' && \
   sed -i $fs_mod_file -e s:'#applications/mod_hiredis:applications/mod_hiredis:' && \
-  sed -i $fs_mod_file -e s:'#applications/mod_nibblebill:applications/mod_nibblebill:' && \
   sed -i $fs_mod_file -e s:'#applications/mod_curl:applications/mod_curl:' && \
   sed -i $fs_mod_file -e s:'#event_handlers/mod_json_cdr:event_handlers/mod_json_cdr:' && \
+  sed -i $fs_mod_file -e s:'event_handlers/mod_xml_cdr:#event_handlers/mod_xml_cdr:' && \
   sed -i $fs_mod_file -e s:'#formats/mod_shout:formats/mod_shout:' && \
   sed -i $fs_mod_file -e s:'#formats/mod_pgsql:formats/mod_pgsql:' && \
   sed -i $fs_mod_file -e s:'applications/mod_signalwire:#applications/mod_signalwire:'
+  
+#sed -i $fs_mod_file -e s:'#applications/mod_cidlookup:applications/mod_cidlookup:' && 
+#sed -i $fs_mod_file -e s:'#applications/mod_memcache:applications/mod_memcache:' && 
+#sed -i $fs_mod_file -e s:'#applications/mod_nibblebill:applications/mod_nibblebill:' &&
 
 RUN cd /usr/src/freeswitch && ./configure -C \
   --prefix=/usr --localstatedir=/var --sysconfdir=/etc --with-openssl \
