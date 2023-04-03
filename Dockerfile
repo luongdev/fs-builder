@@ -51,14 +51,13 @@ RUN cd /usr/src/freeswitch && autoreconf -f -i \
   --sysconfdir=/etc --with-openssl --with-lws=yes \
   --enable-portable-binary --enable-core-pgsql-support --disable-dependency-tracking
 
-RUN cd /usr/src/freeswitch && make -j && make install && make sounds-install moh-install \
-  && make hd-sounds-install hd-moh-install && make cd-sounds-install cd-moh-install
-
-RUN mkdir -p /usr/share/freeswitch/sounds/music/default \
-  && mv /usr/share/freeswitch/sounds/music/*000 /usr/share/freeswitch/sounds/music/default
+COPY src/sounds/* /usr/share/freeswitch/
+RUN cd /usr/share/freeswitch/ && cat sounds.tar.gz.* | tar xzvf - && rm -rf sounds.tar.gz.*
 
 RUN apt autoclean && rm -rf /usr/src/libks && rm -rf /usr/src/sofia-sip \
-  && rm -rf /usr/src/spandsp && rm -rf /usr/src/websockets && rm -rf /tmp/*
+  && rm -rf /usr/src/spandsp && rm -rf /usr/src/websockets && rm -rf /tmp/* \
+  && rm -rf /usr/src/sofia && rm -rf /usr/src/freeswitch-1.10.9.-release.zip \
+  && rm -rf /usr/src/freeswitch/freeswitch-sounds*
 
 VOLUME ["/etc/freeswitch", "/var/lib/freeswitch", "/usr/share/freeswitch", "/opt/freeswitch"]
 
