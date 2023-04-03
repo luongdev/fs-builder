@@ -54,8 +54,8 @@ RUN cd /usr/src/freeswitch && autoreconf -f -i \
 COPY src/sounds/* /usr/share/freeswitch/
 RUN cd /usr/share/freeswitch/ && cat sounds.tar.gz.* | tar xzvf - && rm -rf sounds.tar.gz.*
 
-RUN apt autoclean && rm -rf /usr/src/libks && rm -rf /usr/src/sofia-sip \
-  && rm -rf /usr/src/spandsp && rm -rf /usr/src/websockets && rm -rf /tmp/* \
+RUN apt autoclean && rm -rf /usr/src/libks && rm -rf /tmp/* \
+  && rm -rf /usr/src/spandsp && rm -rf /usr/src/websockets \
   && rm -rf /usr/src/sofia && rm -rf /usr/src/freeswitch-1.10.9.-release.zip \
   && rm -rf /usr/src/freeswitch/freeswitch-sounds*
 
