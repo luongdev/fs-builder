@@ -24,6 +24,9 @@ RUN cd /usr/src && git clone https://github.com/warmcat/libwebsockets.git websoc
   && cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX:PATH=/usr ../.. \
   && make && make install && export CPLUS_INCLUDE_PATH=/usr/include/libwebsockets
 
+# for v8
+RUN apt install -y libncurses5
+
 RUN cd /usr/src && wget http://files.freeswitch.org/freeswitch-releases/freeswitch-1.10.9.-release.zip \
   && unzip freeswitch-1.10.9.-release.zip && mv freeswitch-1.10.9.-release freeswitch
 
