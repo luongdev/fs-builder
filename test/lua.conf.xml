@@ -1,0 +1,7 @@
+<configuration name="lua.conf" description="LUA Configuration">
+  <settings>
+    <param name="startup-script" value="startup_script_1.lua"/>
+    <param name="startup-script" value="locationlocal.lua"/>
+    <param name="startup-script" value="locationforeign.lua"/>
+  </settings>
+</configuration>

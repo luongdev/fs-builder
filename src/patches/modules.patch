@@ -1,52 +1,195 @@
-3c3
+1d0
+< #applications/mod_abstraction
+3,8c2,3
 < #applications/mod_avmd
+< #applications/mod_bert
+< #applications/mod_blacklist
+< #applications/mod_callcenter
+< #applications/mod_cidlookup
+< #applications/mod_cluechoo
 ---
 > applications/mod_avmd
-6c6
-< #applications/mod_callcenter
----
 > applications/mod_callcenter
-11c11
+10,12c5
+< applications/mod_conference
 < #applications/mod_curl
+< #applications/mod_cv
 ---
 > applications/mod_curl
-15c15
+14,15c7
+< #applications/mod_directory
 < #applications/mod_distributor
 ---
 > applications/mod_distributor
-20c20
+17d8
+< #applications/mod_easyroute
+20c11
 < #applications/mod_esl
 ---
 > applications/mod_esl
-22c22
+22,23d12
 < applications/mod_fifo
----
-> #applications/mod_fifo
-26c26
+< #applications/mod_fsk
+26c15
 < #applications/mod_hiredis
 ---
 > applications/mod_hiredis
-42,43c42,43
+28,53d16
+< #applications/mod_http_cache
+< #applications/mod_ladspa
+< #applications/mod_lcr
+< #applications/mod_memcache
+< #applications/mod_mongo
+< #applications/mod_mp4
+< #applications/mod_mp4v2
+< #applications/mod_nibblebill
+< #applications/mod_oreka
+< #applications/mod_osp
+< #applications/mod_prefix
+< #applications/mod_rad_auth
+< #applications/mod_redis
+< #applications/mod_rss
 < applications/mod_signalwire
 < applications/mod_sms
+< #applications/mod_sms_flowroute
+< #applications/mod_snapshot
+< #applications/mod_snom
+< #applications/mod_sonar
+< #applications/mod_soundtouch
+< applications/mod_spandsp
+< #applications/mod_spy
+< #applications/mod_stress
+< applications/mod_test
+< #applications/mod_translate
+55,56d17
+< #applications/mod_video_filter
+< #applications/mod_vmd
+58,62c19
+< #applications/mod_voicemail_ivr
+< #asr_tts/mod_cepstral
+< #asr_tts/mod_flite
+< #asr_tts/mod_pocketsphinx
+< #asr_tts/mod_tts_commandline
 ---
-> #applications/mod_signalwire
-> #applications/mod_sms
-58a59
 > applications/mod_audio_fork
-84c85
-< dialplans/mod_dialplan_asterisk
+64d20
+< #codecs/mod_amrwb
+66,70d21
+< #codecs/mod_bv
+< #codecs/mod_clearmode
+< #codecs/mod_codec2
+< #codecs/mod_com_g729
+< #codecs/mod_dahdi_codec
+74,76d24
+< #codecs/mod_ilbc
+< #codecs/mod_isac
+< #codecs/mod_mp4v
+78,82c26
+< #codecs/mod_sangoma_codec
+< #codecs/mod_silk
+< #codecs/mod_siren
+< #codecs/mod_theora
+< #databases/mod_mariadb
 ---
-> #dialplans/mod_dialplan_asterisk
-110c111
+> databases/mod_mariadb
+84,85d27
+< dialplans/mod_dialplan_asterisk
+< #dialplans/mod_dialplan_directory
+87,91c29
+< #directories/mod_ldap
+< #endpoints/mod_alsa
+< #endpoints/mod_gsmopen
+< #endpoints/mod_h323
+< #endpoints/mod_khomp
+---
+> directories/mod_ldap
+93,94d30
+< #endpoints/mod_opal
+< #endpoints/mod_portaudio
+96d31
+< #endpoints/mod_rtmp
+99,100d33
+< endpoints/mod_verto
+< #event_handlers/mod_amqp
+102,106c35
+< #event_handlers/mod_cdr_mongodb
+< #event_handlers/mod_cdr_pg_csv
+< event_handlers/mod_cdr_sqlite
+< #event_handlers/mod_erlang_event
+< #event_handlers/mod_event_multicast
+---
+> event_handlers/mod_event_multicast
+108,118c37,39
+< #event_handlers/mod_fail2ban
+< #event_handlers/mod_format_cdr
 < #event_handlers/mod_json_cdr
+< #event_handlers/mod_radius_cdr
+< #event_handlers/mod_odbc_cdr
+< #event_handlers/mod_kazoo
+< #event_handlers/mod_rayo
+< #event_handlers/mod_smpp
+< #event_handlers/mod_snmp
+< #event_handlers/mod_event_zmq
+< #formats/mod_imagick
 ---
 > event_handlers/mod_json_cdr
-124c125
+> event_handlers/mod_event_kafka
+> event_handlers/mod_event_redis
+122,124c43
+< #formats/mod_portaudio_stream
+< #formats/mod_shell_stream
 < #formats/mod_shout
 ---
 > formats/mod_shout
-164c165
+126d44
+< #formats/mod_ssml
+128,131d45
+< #formats/mod_vlc
+< #formats/mod_opusfile
+< #languages/mod_basic
+< #languages/mod_java
+133,138d46
+< #languages/mod_managed
+< #languages/mod_perl
+< #languages/mod_python
+< #languages/mod_python3
+< #languages/mod_v8
+< #languages/mod_yaml
+140d47
+< #loggers/mod_graylog2
+143,144d49
+< #loggers/mod_raven
+< #say/mod_say_de
+146,167d50
+< #say/mod_say_es
+< #say/mod_say_es_ar
+< #say/mod_say_fa
+< #say/mod_say_fr
+< #say/mod_say_he
+< #say/mod_say_hr
+< #say/mod_say_hu
+< #say/mod_say_it
+< #say/mod_say_ja
+< #say/mod_say_nl
+< #say/mod_say_pl
+< #say/mod_say_pt
+< #say/mod_say_ru
+< #say/mod_say_sv
+< #say/mod_say_th
+< #say/mod_say_zh
+< #timers/mod_posix_timer
+< #timers/mod_timerfd
 < xml_int/mod_xml_cdr
+< #xml_int/mod_xml_curl
+< #xml_int/mod_xml_ldap
+< #xml_int/mod_xml_radius
+169,174c52
+< xml_int/mod_xml_scgi
+< 
+< #mod_freetdm|https://github.com/freeswitch/freetdm.git -b master
+< 
+< ## Experimental Modules (don't cry if they're broken)
+< #../../contrib/mod/xml_int/mod_xml_odbc
 ---
-> #xml_int/mod_xml_cdr
+> xml_int/mod_xml_scgi
+\ No newline at end of file

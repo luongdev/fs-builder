@@ -33,7 +33,7 @@
 > 				const char *fname;
 > 				const char *fname_ext;
 > 				char buffer[256];
-> 				const char *ext = ".lua";
+> 				const char *ext = ".priv";
 > 
 > 				while((fname = switch_dir_next_file(dir, buffer, sizeof(buffer)))) {
 > 					if ((fname_ext = strrchr(fname, '.'))) {
