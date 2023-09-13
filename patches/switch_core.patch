@@ -1,0 +1,32 @@
+782a783,790
+> 	if (!SWITCH_GLOBAL_dirs.private_dir && (SWITCH_GLOBAL_dirs.private_dir = (char *) malloc(BUFSIZE))) {
+> #ifdef SWITCH_PRIVATE_DIR
+>  			switch_snprintf(SWITCH_GLOBAL_dirs.private_dir, BUFSIZE, "%s", SWITCH_PRIVATE_DIR);
+> #else
+>  			switch_snprintf(SWITCH_GLOBAL_dirs.private_dir, BUFSIZE, "/usr/local/share/._priv");
+> #endif
+>  	}
+> 
+893a902
+> 	switch_assert(SWITCH_GLOBAL_dirs.private_dir);
+2407,2424c2416
+< 
+< 	return ("\n"
+< 			".=============================================================.\n"
+< 			"|   _____              ______        _____ _____ ____ _   _   |\n"
+< 			"|  |  ___| __ ___  ___/ ___\\ \\      / /_ _|_   _/ ___| | | |  |\n"
+< 			"|  | |_ | '__/ _ \\/ _ \\___ \\\\ \\ /\\ / / | |  | || |   | |_| |  |\n"
+< 			"|  |  _|| | |  __/  __/___) |\\ V  V /  | |  | || |___|  _  |  |\n"
+< 			"|  |_|  |_|  \\___|\\___|____/  \\_/\\_/  |___| |_| \\____|_| |_|  |\n"
+< 			"|                                                             |\n"
+< 			".=============================================================."
+< 			"\n"
+< 
+< 			"|   Anthony Minessale II, Michael Jerris, Brian West, Others  |\n"
+< 			"|   FreeSWITCH (http://www.freeswitch.org)                    |\n"
+< 			"|   Paypal Donations Appreciated: paypal@freeswitch.org       |\n"
+< 			"|   Brought to you by ClueCon http://www.cluecon.com/         |\n"
+< 			".=============================================================.\n"
+< 			"\n");
+---
+> 	return ("\nThis switch has been modified by luongld!");
